@@ -1,0 +1,10 @@
+# generics/coils.ato
+module Coil:
+    parameter inductance = 0mH  # インダクタンスの初期値
+    signal input
+    signal output
+
+    # コイルのインダクタンスと接続を定義
+    def initialize(self, inductance_value):
+        self.inductance = inductance_value
+        input ~ output  # コイルの入力と出力を接続

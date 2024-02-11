@@ -1,0 +1,10 @@
+# generics/spark_gaps.ato
+module SparkGap:
+    parameter distance = 0mm  # スパークギャップの距離の初期値
+    signal terminal1
+    signal terminal2
+
+    # スパークギャップの距離と接続を定義
+    def initialize(self, gap_distance):
+        self.distance = gap_distance
+        terminal1 ~ terminal2  # スパークギャップの端子を接続

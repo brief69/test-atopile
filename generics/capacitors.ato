@@ -1,0 +1,10 @@
+# generics/capacitors.ato
+module Capacitor:
+    parameter value = 0nF  # キャパシタの容量の初期値
+    signal positive
+    signal negative
+
+    # キャパシタの容量と接続を定義
+    def initialize(self, capacitance_value):
+        self.value = capacitance_value
+        positive ~ negative  # キャパシタのプラス極とマイナス極を接続

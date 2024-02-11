@@ -4,3 +4,14 @@ builds:
     entry: elec/src/test-atopile.ato:TestAtopile
 dependencies:
 - generics
+# this line defines the version of compiler required to compile the project
+ato-version: ^0.2.0
+# those lines define the elements that will be built by the compiler
+builds:
+  default:
+    entry: elec/src/test-atpile.ato:test-atpile
+# The compiler version follows semantic versioning. The required version to compile your project can be specified using npm's standard.
+
+# Those lines define the package dependencies that your project might have. You can specify the exact package version you want using semantic versioning.
+dependencies:
+- generics^v1.0.0

@@ -1,0 +1,6 @@
+# 仮想的な結合コンポーネントの定義
+module VirtualCoupling:
+    parameter coupling_coefficient = 0.1  # 結合係数のデフォルト値
+
+    # このコンポーネントは実際の電気的接続を持てないが、
+    # 一次コイルと二次コイルの間の結合係数を表現するために使用される

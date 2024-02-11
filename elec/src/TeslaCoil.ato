@@ -1,0 +1,52 @@
+import Coil from "generics/coils.ato"
+import Capacitor from "generics/capacitors.ato"
+import SparkGap from "generics/spark_gaps.ato"
+import VirtualCoupling from "virtual_coupling.ato"
+
+module Coil:
+    signal primary
+    signal secondary
+    signal ground
+
+    # 一次コイルの設定
+    primary_coil = new Coil(inductance=10mH)
+    primary_coil.inductance = 10mH
+    primary_coil.connection = primary ~ ground
+
+    # 二次コイルの設定
+    secondary_coil = new Coil(inductance=100mH)
+    secondary_coil.inductance = 100mH
+    secondary_coil.connection = secondary ~ ground
+
+    # キャパシタの設定
+    capacitor = new Capacitor(value=1nF)
+    capacitor.value = 1nF
+    capacitor.connection = primary ~ ground
+
+    # スパークギャップの設定
+    spark_gap = new SparkGap(distance=2mm)
+    spark_gap.distance = 2mm
+    spark_gap.connection = primary ~ ground
+    
+    # 一次コイルとキャパシタ、スパークギャップの接続
+    primary_coil.output ~ capacitor.positive
+    capacitor.negative ~ spark_gap.terminal1
+    spark_gap.terminal2 ~ primary_coil.input
+    
+
+
+module CoilCoupling:
+    # 一次コイルの設定
+    primary_coil = new Coil(inductance=10mH)
+    
+    # 二次コイルの設定
+    secondary_coil = new Coil(inductance=100mH)
+    
+    # 一次コイルと二次コイルの間の結合係数
+    coupling = new VirtualCoupling(coupling_coefficient=0.1)
+
+    # 結合の設定
+    # この例では、結合係数を直接的に設定する方法を示していますが、
+    # 実際の`atopile`の構文では、結合を表現する直接的な方法が提供されていないため、
+    # この部分は概念的なものです。実際には、一次コイルと二次コイルの物理的な配置や
+    # その他の設計要素を通じて結合を実現する必要があります。
